@@ -40,7 +40,7 @@
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" value="{{ session()->get('user.email') }}">
+                              <input type="email" class="form-control" name="email" id="email" value="{{ session()->get('user.email') }}" readonly>
                           </div>
                       </div>
                       <div class="form-group">
