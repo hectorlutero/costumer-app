@@ -1,6 +1,6 @@
 <div class="container-fluid">
    <div class="navbar-wrapper">
-   <a class="navbar-brand" href="javascript:;">Dashboard</a>
+   <a class="navbar-brand" href="javascript:;">@if(explode('/', Request::url())[3] == 'dashboard') Dashboard  @elseif (explode('/', Request::url())[3] == 'profile') Profile @elseif (explode('/', Request::url())[3] == 'adminArea') Admin Area @endif</a>
    </div>
    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
    <span class="sr-only">Toggle navigation</span>
@@ -57,7 +57,7 @@
          <form method="POST" action="{{ route('logout') }}">
                     @csrf
             <x-responsive-nav-link class="dropdown-item" 
-               href="{{route('logout')}}" 
+               href="{{ route('logout') }}" 
                onclick="event.preventDefault(); this.closest('form').submit();"
                >{{ __('Log Out') }}</x-responsive-nav-link>
          </form>

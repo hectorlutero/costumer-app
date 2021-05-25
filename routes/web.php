@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,30 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::post('login', [UserAuthController::class, 'login']);
+Route::post('register', [RegisteredUserController::class, 'store'])->name('auth.register');
+Route::post('check', [UserAuthController::class, 'check'])->name('auth.check');
+Route::post('logout', [UserAuthController::class, 'logout'])->name('logout');
+Route::get('dashboard', [UserAuthController::class, 'dashboard'])->name('dashboard');
+Route::get('profile', [DashboardController::class, 'profile'])->name('profile');
+Route::get('adminArea', [DashboardController::class, 'adminArea'])->name('adminArea');
 
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-// });
 
-// Route::group(['middleware' => ['auth', 'role:administrator']], function () {
-//     Route::get('/dashboard/adminArea', 'App\Http\Controllers\DashboardController@adminArea')->name('dashboard.adminArea');
-// });
-
-// Route::group(['middleware' => ['auth', 'role:administrator']], function () {
-//     Route::get('/dashboard/becomeUser', 'App\Http\Controllers\DashboardController@becomeUser')->name('dashboard.becomeUser');
-// });
-
-// Route::group(['middleware' => ['auth', 'role:user']], function () {
-//     Route::get('/dashboard/profile', 'App\Http\Controllers\DashboardController@userArea')->name('dashboard.userArea');
-// });
-// Route::group(['middleware' => ['auth', 'role:user']], function () {
-//     Route::get('/dashboard/becomeAdmin', 'App\Http\Controllers\DashboardController@becomeAdmin')->name('dashboard.becomeAdmin');
-// });
 
 require __DIR__.'/auth.php';
