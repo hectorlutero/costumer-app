@@ -68,7 +68,7 @@
                         <div class="box">
                            <div class="content registerBox" style="display:none;">
                            <div class="form">
-                              <form method="POST" html="{:multipart=>true}" data-remote="true" action="{{ route('register') }}" accept-charset="UTF-8">
+                              <form method="post" data-remote="true" action="{{ route('register') }}" accept-charset="UTF-8">
                                   @csrf
                                 <input id="name_register" class="form-control" type="text" placeholder="Name" name="name" value="{{ old('name') }}">
                                 <span class="text-danger">@error('name'){{ $message }} @enderror</span>

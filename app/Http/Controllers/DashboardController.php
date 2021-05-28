@@ -9,6 +9,7 @@ class DashboardController extends Controller
     public function index() {
         return view('');  
     }
+    
     public function adminArea() {
         if(Auth::user()->hasRole('administrator')) {
             return view('adminArea');

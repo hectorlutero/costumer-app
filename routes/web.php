@@ -20,11 +20,12 @@ Route::get('/', function () {
 });
 
 Route::post('login', [UserAuthController::class, 'login']);
-Route::post('register', [RegisteredUserController::class, 'store'])->name('auth.register');
+Route::post('register', [UserAuthController::class, 'create'])->name('register');
 Route::post('check', [UserAuthController::class, 'check'])->name('auth.check');
 Route::post('logout', [UserAuthController::class, 'logout'])->name('logout');
 Route::get('dashboard', [UserAuthController::class, 'dashboard'])->name('dashboard');
 Route::get('profile', [DashboardController::class, 'profile'])->name('profile');
+Route::put('changeRole/{$id}', [DashboardController::class, 'changeRole'])->name('changeRole');
 Route::get('adminArea', [DashboardController::class, 'adminArea'])->name('adminArea');
 
 

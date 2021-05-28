@@ -2,9 +2,7 @@
 <x-app-layout>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>{{ session()->get('user.name') }}</h1></div>
-    	<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
-    </div>
+  		<div class="col-sm-10"><h1>{{ session()->get('user.name') }}</h1></div>    </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
               
@@ -21,7 +19,7 @@
          <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  {{-- <form class="form" action="##" method="post" id="registrationForm"> --}}
                       <div class="form-group">
                           
                           <div class="col-xs-6">
@@ -43,6 +41,16 @@
                               <input type="email" class="form-control" name="email" id="email" value="{{ session()->get('user.email') }}" readonly>
                           </div>
                       </div>
+                      <form class="form" action="#{{--  route('changeRole', session()->get('user.id')) --}}" method="post" id="registrationForm">
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Change Role</h4></label>
+                              <select type="select" class="form-control" name="role_id" id="role">
+                                <option name="role" value="2">User</option>
+                                <option name="role" value="1">Admin</option>
+                              </select>
+                          </div>
+                      </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
@@ -60,9 +68,7 @@
                <h2></h2>
                
                <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
+                      <div class="form-group">                          
                           <div class="col-xs-6">
                               <label for="first_name"><h4>First name</h4></label>
                               <input type="text" class="form-control" name="first_name" id="first_name" value="{{ session()->get('user.email') }}">
@@ -78,6 +84,16 @@
                           <div class="col-xs-6">
                               <label for="email"><h4>Email</h4></label>
                               <input type="email" class="form-control" name="email" id="email" value="{{ session()->get('user.email') }}">
+                          </div>
+                      </div>
+                    <form class="form" action="{{ route('changeRole', session()->get('user.id')) }}" method="post" id="registrationForm">
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label><h4>Become Admain</h4></label>
+                              <select type="select" class="form-control" name="role_id" id="role">
+                                <option name="role" value="1"></option>
+                                <option name="role" value="2"></option>
+                              </select>
                           </div>
                       </div>
                       <div class="form-group">
